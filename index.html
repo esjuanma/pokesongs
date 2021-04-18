@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tone</title>
+</head>
+<body>
+    <script src="tracks/default.js"></script>
+    <script src="node_modules/tone/build/Tone.js"></script>
+
+    <script>
+        document.addEventListener("click", () => {
+            const synth = new Tone.Synth().toDestination();
+            const now = Tone.now()
+            notes.forEach((note, index) => {
+                if (!note) return;
+                console.log(note)
+                synth.triggerAttackRelease(note.note, note.time, now + 0.5 * index)
+            });
+        })
+    </script>
+</body>
+</html>
